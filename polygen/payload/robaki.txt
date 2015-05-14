@@ -1,0 +1,27 @@
+
+X
+3086 "MALWARE-CNC Win.Trojan.Symmi variant HTTP response attempt"
+content:"%set_intercepts%";
+content:"%ban_contact%";
+content:"%ebaylive%";
+content:"%dep_host%";
+content:"%relay_soxid%";
+
+
+3225 "MALWARE-CNC Win.Trojan.HawkEye keylogger exfiltration attempt"
+content:"Subject|3A 20|HawkEye Keylogger|20 7C 20|";
+content:"=0D=0APC";
+content:"=0D=0AInstalled";
+content:"=0D=0AOperating System"; within:75; distance 15;
+content:"=0D=0AInternal IP"; within:200; distance 10;
+content:"=0D=0AExternal IP"; within:50; distance 5;
+
+
+2445 "MALWARE-CNC Win.Trojan.Gupd variant outbound connection"
+content:"cstype="; depth:7;
+content:"&authname="; within:48; distance:1;
+content:"&authpass="; within:48; distance:1;
+content:"&hostname="; within:48; distance:1;
+content:"&ostype="; within:256; distance:1;
+content:"&macaddr="; within:64; distance:16;
+content:"&owner="; within:48; distance:17;

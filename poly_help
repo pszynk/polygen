@@ -1,0 +1,77 @@
+usage: PolYGen [-h] [--version] [--verbose] [--number NUMBER]
+               [--format FORMAT] [--directory DIRECTORY] [--save PARAM_FILE]
+               [--seed SEED] --rand-method {freq,urand,uniform}
+               [--chunk-size MIN [MAX ...]] --payload {test_attack}
+
+polygen - random pseudo-polymorphic data generator by pszynk
+
+optional arguments:
+  -h, --help
+      show this help message and exit
+      
+  --version
+      print program version
+      
+  --verbose, -v
+      explain whats is being done:
+      cmd    level    effect:
+      ------------------------------
+      none       0    no output
+      -v         1    info level
+      -vv        2    debug level
+      
+
+output options:
+  --number NUMBER, -n NUMBER
+      number of files to generate
+      
+  --format FORMAT, -t FORMAT
+      filename format for generated files.
+      Format consists of legal chracters and speical tokens:
+      
+      Tokens:
+      -------------------------
+      {idx}        index of generated file
+      {rand}       random method that file is generated with
+      {type}       type of payload that file contains
+      
+      example:
+      "{type}-file_{rand}-{idx}" can result in file `CodeRed2-file_urand_4.dat`
+      
+  --directory DIRECTORY, -d DIRECTORY
+      directory that all files are written to
+      
+
+load or/and save execution parameters:
+  --save PARAM_FILE
+      saves all command line parameters of current execution to
+      given file.
+      
+      PARAM_FILE can be loaded by writing '@PARAM_FILE' in command line
+      
+      example: polygen @some_folder/file_with_params
+      
+
+randomization parameters:
+  --seed SEED, -e SEED
+      seed value for random generation.
+      Can be used when drawing value for file size
+      or in some versions of random generation modes
+      
+  --rand-method {freq,urand,uniform}, -m {freq,urand,uniform}
+      Chose method for generating random data.
+      Options:
+          * freq - random bytes generator based on bytes frequency in http packets
+          * urand - simple random bytes generator using /dev/urandom
+          * uniform - simple random bytes generator using python random module
+      
+  --chunk-size MIN [MAX ...], -s MIN [MAX ...]
+      Sizes of byte chunks are randomly chosen from range [MIN, MAX]
+      
+      Constraint: 0 <= MIN <= MAX
+      
+  --payload {test_attack}, -p {test_attack}
+      
+      
+
+happy using ;-)
